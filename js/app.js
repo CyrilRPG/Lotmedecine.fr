@@ -51,7 +51,13 @@ async function initAnnonces() {
   const grid = document.getElementById('annonces-grid');
   const loading = document.getElementById('annonces-loading');
   const empty = document.getElementById('annonces-empty');
+  const searchInput = document.getElementById('search-input');
+  const budgetMin = document.getElementById('budget-min');
+  const budgetMax = document.getElementById('budget-max');
+  const filtersCount = document.getElementById('filters-count');
   if (!grid) return;
+
+  let allAnnonces = [];
 
   try {
     const { data, error } = await sb
@@ -68,6 +74,54 @@ async function initAnnonces() {
       return;
     }
 
+    allAnnonces = data;
+    renderCards(allAnnonces);
+
+    // Filters
+    if (searchInput) searchInput.addEventListener('input', applyFilters);
+    if (budgetMin) budgetMin.addEventListener('input', applyFilters);
+    if (budgetMax) budgetMax.addEventListener('input', applyFilters);
+
+  } catch (err) {
+    console.error('Erreur chargement annonces:', err);
+    if (loading) loading.style.display = 'none';
+    grid.innerHTML = '<p class="empty-state">Une erreur est survenue lors du chargement des annonces.</p>';
+  }
+
+  function applyFilters() {
+    const query = (searchInput?.value || '').toLowerCase().trim();
+    const min = budgetMin?.value ? parseFloat(budgetMin.value) : null;
+    const max = budgetMax?.value ? parseFloat(budgetMax.value) : null;
+
+    const filtered = allAnnonces.filter(a => {
+      // Search filter
+      if (query) {
+        const haystack = `${a.titre} ${a.description} ${a.universite} ${a.promo} ${a.prenom_nom}`.toLowerCase();
+        if (!haystack.includes(query)) return false;
+      }
+      // Budget filter
+      if (min !== null && a.prix < min) return false;
+      if (max !== null && a.prix > max) return false;
+      return true;
+    });
+
+    if (filtersCount) {
+      if (query || min !== null || max !== null) {
+        filtersCount.textContent = `${filtered.length} résultat${filtered.length > 1 ? 's' : ''} sur ${allAnnonces.length}`;
+      } else {
+        filtersCount.textContent = '';
+      }
+    }
+
+    renderCards(filtered);
+  }
+
+  function renderCards(data) {
+    if (!data || data.length === 0) {
+      grid.innerHTML = '<div class="empty-state"><h3>Aucune annonce trouvée</h3><p>Essaie avec d\'autres critères de recherche.</p></div>';
+      return;
+    }
+
     grid.innerHTML = data.map(a => {
       const photo = a.photos && a.photos.length > 0
         ? `<img src="${a.photos[0]}" alt="${a.titre}" loading="lazy">`
@@ -77,6 +131,9 @@ async function initAnnonces() {
       const emailSafe = (a.email || '').replace(/"/g, '&quot;');
       const telSafe = (a.telephone || '').replace(/"/g, '&quot;');
       const nameSafe = (a.prenom_nom || '').replace(/"/g, '&quot;');
+      const desc = (a.description || '').length > 120
+        ? a.description.substring(0, 120) + '...'
+        : (a.description || '');
       return `
         <article class="card">
           <div class="card__image">
@@ -86,6 +143,7 @@ async function initAnnonces() {
           <div class="card__body">
             <h3 class="card__title">${a.titre}</h3>
             <p class="card__meta">${a.universite} · ${a.promo}</p>
+            <p class="card__desc">${desc}</p>
             <p class="card__price">${formatPrice(a.prix)}</p>
             <button class="card__contact" data-email="${emailSafe}" data-tel="${telSafe}" data-name="${nameSafe}">Contacter</button>
           </div>
@@ -99,10 +157,6 @@ async function initAnnonces() {
         openContactModal(btn.dataset.name, btn.dataset.email, btn.dataset.tel);
       });
     });
-  } catch (err) {
-    console.error('Erreur chargement annonces:', err);
-    if (loading) loading.style.display = 'none';
-    grid.innerHTML = '<p class="empty-state">Une erreur est survenue lors du chargement des annonces.</p>';
   }
 }
 

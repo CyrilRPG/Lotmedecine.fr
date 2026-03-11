@@ -440,6 +440,62 @@ button, input, textarea, select {
   }
 }
 
+/* Filters */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 32px;
+}
+
+.filters__search {
+  flex: 1;
+}
+
+.filters__search .form-input {
+  width: 100%;
+}
+
+.filters__budget {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filters__budget label {
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+}
+
+.filters__budget-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filters__budget-inputs .form-input {
+  width: 100px;
+}
+
+.filters__budget-sep {
+  color: var(--color-secondary);
+}
+
+.filters__count {
+  font-size: var(--text-small);
+  color: var(--color-secondary);
+  padding-top: 8px;
+  min-height: 24px;
+}
+
+@media (min-width: 768px) {
+  .filters {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
 /* Cards Grid */
 .annonces-grid {
   display: grid;
@@ -529,6 +585,17 @@ button, input, textarea, select {
   font-size: var(--text-small);
   color: var(--color-secondary);
   margin-bottom: 8px;
+}
+
+.card__desc {
+  font-size: var(--text-small);
+  color: var(--color-secondary);
+  margin-bottom: 8px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card__price {

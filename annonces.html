@@ -51,6 +51,24 @@
     </div>
   </section>
 
+  <!-- Filters -->
+  <section class="container">
+    <div class="filters">
+      <div class="filters__search">
+        <input type="text" id="search-input" class="form-input" placeholder="Rechercher par titre, université, matière...">
+      </div>
+      <div class="filters__budget">
+        <label for="budget-min">Budget</label>
+        <div class="filters__budget-inputs">
+          <input type="number" id="budget-min" class="form-input" placeholder="Min €" min="0" step="1">
+          <span class="filters__budget-sep">-</span>
+          <input type="number" id="budget-max" class="form-input" placeholder="Max €" min="0" step="1">
+        </div>
+      </div>
+    </div>
+    <p id="filters-count" class="filters__count"></p>
+  </section>
+
   <!-- Annonces Grid -->
   <section class="container">
     <!-- Loading skeletons -->
