@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | LotMédecine</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="admin">
+
+  <!-- Login screen -->
+  <div id="admin-login" class="admin-login">
+    <div class="admin-login__box">
+      <h1>Admin LotMédecine</h1>
+      <p>Accès réservé aux administrateurs.</p>
+      <form id="login-form">
+        <div class="form-group" style="margin-bottom:16px;">
+          <label for="admin-password">Mot de passe</label>
+          <input type="password" id="admin-password" class="form-input" required placeholder="Mot de passe">
+        </div>
+        <div id="login-error" class="form-message form-message--error" style="display:none;">Mot de passe incorrect.</div>
+        <button type="submit" class="btn btn--primary btn--full">Connexion</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin dashboard (hidden until login) -->
+  <div id="admin-dashboard" style="display:none;">
+    <header class="header">
+      <div class="container">
+        <a href="/" class="header__logo">LotMédecine</a>
+        <nav class="header__nav">
+          <span style="color:var(--color-secondary);">Administration</span>
+        </nav>
+        <button class="btn btn--secondary" id="admin-logout">Déconnexion</button>
+      </div>
+    </header>
+
+    <section class="admin-content">
+      <div class="container">
+        <h1>Gestion des annonces</h1>
+        <p class="admin-content__subtitle" id="admin-count"></p>
+
+        <div id="admin-loading" style="padding:32px;text-align:center;color:var(--color-secondary);">Chargement...</div>
+        <div id="admin-list"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Edit modal -->
+  <div id="edit-modal" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <div class="modal__header">
+        <h3>Modifier l'annonce</h3>
+        <button class="modal__close" id="edit-modal-close">&times;</button>
+      </div>
+      <form id="edit-form">
+        <input type="hidden" id="edit-id">
+        <div class="form-grid form-grid--two" style="margin-bottom:16px;">
+          <div class="form-group">
+            <label for="edit-titre">Titre</label>
+            <input type="text" id="edit-titre" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-prix">Prix (€)</label>
+            <input type="number" id="edit-prix" class="form-input" required min="0" step="0.01">
+          </div>
+        </div>
+        <div class="form-grid form-grid--two" style="margin-bottom:16px;">
+          <div class="form-group">
+            <label for="edit-universite">Université</label>
+            <input type="text" id="edit-universite" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-promo">Promotion</label>
+            <input type="text" id="edit-promo" class="form-input" required>
+          </div>
+        </div>
+        <div class="form-grid form-grid--two" style="margin-bottom:16px;">
+          <div class="form-group">
+            <label for="edit-prenom-nom">Nom</label>
+            <input type="text" id="edit-prenom-nom" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-email">Email</label>
+            <input type="email" id="edit-email" class="form-input" required>
+          </div>
+        </div>
+        <div class="form-grid form-grid--two" style="margin-bottom:16px;">
+          <div class="form-group">
+            <label for="edit-telephone">Téléphone</label>
+            <input type="tel" id="edit-telephone" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="edit-statut">Statut</label>
+            <select id="edit-statut" class="form-input">
+              <option value="disponible">Disponible</option>
+              <option value="vendu">Vendu</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:16px;">
+          <label for="edit-description">Description</label>
+          <textarea id="edit-description" class="form-input" rows="4" required></textarea>
+        </div>
+        <div id="edit-message" class="form-message"></div>
+        <div style="display:flex;gap:12px;">
+          <button type="submit" class="btn btn--primary" style="flex:1;">Enregistrer</button>
+          <button type="button" class="btn btn--secondary" id="edit-cancel">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete confirm modal -->
+  <div id="delete-modal" class="modal-overlay" style="display:none;">
+    <div class="modal">
+      <div class="modal__header">
+        <h3>Supprimer l'annonce</h3>
+        <button class="modal__close" id="delete-modal-close">&times;</button>
+      </div>
+      <p style="margin-bottom:20px;color:var(--color-secondary);">Es-tu sûr de vouloir supprimer cette annonce ? Cette action est irréversible.</p>
+      <p id="delete-title" style="font-weight:600;margin-bottom:20px;"></p>
+      <input type="hidden" id="delete-id">
+      <div style="display:flex;gap:12px;">
+        <button class="btn btn--primary" id="delete-confirm" style="flex:1;background:#991B1B;border-color:#991B1B;">Supprimer</button>
+        <button class="btn btn--secondary" id="delete-cancel">Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
