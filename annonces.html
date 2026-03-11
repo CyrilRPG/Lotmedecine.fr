@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annonces | LotMédecine</title>
+  <meta name="description" content="Retrouve les lots de cours postés par des étudiants en médecine. Contacte directement le vendeur.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="annonces">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="/" class="header__logo">LotMédecine</a>
+      <nav class="header__nav">
+        <a href="/">Accueil</a>
+        <a href="/annonces" class="active">Annonces</a>
+        <a href="/a-propos">À propos</a>
+        <a href="/mentions-legales">Mentions légales</a>
+      </nav>
+      <a href="/poster" class="btn btn--primary header__cta">Poster mon lot</a>
+      <button class="header__hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="/">Accueil</a>
+    <a href="/annonces" class="active">Annonces</a>
+    <a href="/a-propos">À propos</a>
+    <a href="/mentions-legales">Mentions légales</a>
+    <a href="/poster" class="btn btn--primary">Poster mon lot</a>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <p class="page-header__breadcrumb"><a href="/">Accueil</a> &gt; Annonces</p>
+      <div class="page-header__top">
+        <div>
+          <h1>Annonces de lots</h1>
+          <p class="page-header__description">Retrouve ici les lots de cours postés par des étudiants en médecine. Contacte directement le vendeur.</p>
+        </div>
+        <a href="/poster" class="btn btn--primary" style="flex-shrink:0;align-self:flex-start;">Poster mon lot</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Annonces Grid -->
+  <section class="container">
+    <!-- Loading skeletons -->
+    <div id="annonces-loading" class="annonces-grid">
+      <div class="skeleton-card"><div class="skeleton-card__image skeleton"></div><div class="skeleton-card__body"><div class="skeleton-card__line skeleton" style="width:80%"></div><div class="skeleton-card__line skeleton skeleton-card__line--short"></div><div class="skeleton-card__line skeleton" style="width:40%"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-card__image skeleton"></div><div class="skeleton-card__body"><div class="skeleton-card__line skeleton" style="width:80%"></div><div class="skeleton-card__line skeleton skeleton-card__line--short"></div><div class="skeleton-card__line skeleton" style="width:40%"></div></div></div>
+      <div class="skeleton-card"><div class="skeleton-card__image skeleton"></div><div class="skeleton-card__body"><div class="skeleton-card__line skeleton" style="width:80%"></div><div class="skeleton-card__line skeleton skeleton-card__line--short"></div><div class="skeleton-card__line skeleton" style="width:40%"></div></div></div>
+    </div>
+
+    <!-- Empty state (hidden by default) -->
+    <div id="annonces-empty" class="empty-state" style="display:none;">
+      <h3>Aucune annonce pour le moment</h3>
+      <p>Sois le premier à poster ton lot de cours !</p>
+      <a href="/poster" class="btn btn--primary" style="margin-top:16px;">Poster mon lot</a>
+    </div>
+
+    <!-- Cards rendered by JS -->
+    <div id="annonces-grid" class="annonces-grid"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container" style="padding-bottom:64px;">
+    <div class="annonces-cta">
+      <h3>Tu veux vendre tes cours ?</h3>
+      <p>Poste ton annonce gratuitement et sois contacté par des étudiants intéressés.</p>
+      <a href="/poster" class="btn btn--primary">Poster mon annonce</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">LotMédecine</div>
+          <p class="footer__tagline">La marketplace des étudiants en médecine.</p>
+        </div>
+        <div class="footer__links">
+          <a href="/">Accueil</a>
+          <a href="/annonces">Annonces</a>
+          <a href="/a-propos">À propos</a>
+          <a href="/mentions-legales">Mentions légales</a>
+        </div>
+        <div class="footer__contact">
+          <a href="mailto:contactlotmedecine@gmail.com">contactlotmedecine@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2025 LotMédecine · Association loi 1901
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos | LotMédecine</title>
+  <meta name="description" content="Découvre l'histoire de LotMédecine, une association créée par des étudiants en médecine.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="a-propos">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="/" class="header__logo">LotMédecine</a>
+      <nav class="header__nav">
+        <a href="/">Accueil</a>
+        <a href="/annonces">Annonces</a>
+        <a href="/a-propos" class="active">À propos</a>
+        <a href="/mentions-legales">Mentions légales</a>
+      </nav>
+      <a href="/poster" class="btn btn--primary header__cta">Poster mon lot</a>
+      <button class="header__hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="/">Accueil</a>
+    <a href="/annonces">Annonces</a>
+    <a href="/a-propos" class="active">À propos</a>
+    <a href="/mentions-legales">Mentions légales</a>
+    <a href="/poster" class="btn btn--primary">Poster mon lot</a>
+  </nav>
+
+  <!-- About Content -->
+  <section class="about-content">
+    <div class="container">
+      <h1>À propos de LotMédecine</h1>
+
+      <h2>Notre histoire</h2>
+      <p class="about-text">Arnault et Ahmed se sont rencontrés en PASS à l'Université de Picardie. À la fin de leur année, l'un reçu en LAS, l'autre ayant choisi de se réorienter, ils se sont retrouvés avec des cartons entiers de fiches, d'annales et de supports de prépas qu'ils ne savaient pas quoi faire. Trop précieux pour être jetés, trop encombrants pour être gardés.</p>
+
+      <p class="about-text">En discutant avec d'autres étudiants, ils ont réalisé que le problème était universel : d'un côté, des étudiants en PASS qui cherchent à s'équiper sans dépenser des milliers d'euros en supports, de l'autre des anciens qui jettent leurs lots faute de trouver preneur. LotMédecine est né de ce double constat : une plateforme simple, sans friction, sans intermédiaire, pour que les cours continuent à circuler.</p>
+
+      <h2>Nos valeurs</h2>
+      <div class="values-grid">
+        <div class="values-grid__item">
+          <div class="values-grid__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#111827" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10l2 2 4-4"/></svg>
+          </div>
+          <h3>Gratuit pour tous</h3>
+          <p>Poster et consulter une annonce ne coûte rien.</p>
+        </div>
+        <div class="values-grid__item">
+          <div class="values-grid__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#111827" stroke-width="1.5"><path d="M3 10h14M13 6l4 4-4 4"/></svg>
+          </div>
+          <h3>Direct et sans friction</h3>
+          <p>Pas de système de paiement, pas de compte obligatoire. Juste un formulaire.</p>
+        </div>
+        <div class="values-grid__item">
+          <div class="values-grid__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#111827" stroke-width="1.5"><circle cx="7" cy="8" r="3"/><circle cx="13" cy="8" r="3"/><path d="M2 16c0-2.2 2.2-4 5-4s5 1.8 5 4M8 16c0-2.2 2.2-4 5-4s5 1.8 5 4"/></svg>
+          </div>
+          <h3>Entre étudiants</h3>
+          <p>LotMédecine est une association gérée par des anciens étudiants en médecine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">LotMédecine</div>
+          <p class="footer__tagline">La marketplace des étudiants en médecine.</p>
+        </div>
+        <div class="footer__links">
+          <a href="/">Accueil</a>
+          <a href="/annonces">Annonces</a>
+          <a href="/a-propos">À propos</a>
+          <a href="/mentions-legales">Mentions légales</a>
+        </div>
+        <div class="footer__contact">
+          <a href="mailto:contactlotmedecine@gmail.com">contactlotmedecine@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2025 LotMédecine · Association loi 1901
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

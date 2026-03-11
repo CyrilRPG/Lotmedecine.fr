@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "lotmedecine",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/cyrilwisa/Desktop/Lotmedecine.fr", "--config", "/Users/cyrilwisa/Desktop/Lotmedecine.fr/serve.json"],
+      "port": 3000,
+      "autoPort": true
+    }
+  ]
+}

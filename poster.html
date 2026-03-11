@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poster mon lot | LotMédecine</title>
+  <meta name="description" content="Poste ton lot de cours de médecine gratuitement. Les acheteurs te contactent directement.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="poster">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <a href="/" class="header__logo">LotMédecine</a>
+      <nav class="header__nav">
+        <a href="/">Accueil</a>
+        <a href="/annonces">Annonces</a>
+        <a href="/a-propos">À propos</a>
+        <a href="/mentions-legales">Mentions légales</a>
+      </nav>
+      <a href="/poster" class="btn btn--primary header__cta active">Poster mon lot</a>
+      <button class="header__hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="/">Accueil</a>
+    <a href="/annonces">Annonces</a>
+    <a href="/a-propos">À propos</a>
+    <a href="/mentions-legales">Mentions légales</a>
+    <a href="/poster" class="btn btn--primary">Poster mon lot</a>
+  </nav>
+
+  <!-- Form -->
+  <section class="form-page">
+    <div class="container">
+      <h1>Poster mon lot</h1>
+      <p class="form-page__subtitle">Remplis ce formulaire pour mettre ton lot en ligne. Les acheteurs intéressés te contacteront directement.</p>
+
+      <div id="form-message" class="form-message"></div>
+
+      <form id="poster-form" novalidate>
+        <!-- Identité -->
+        <div class="form-grid form-grid--two" style="margin-bottom:20px;">
+          <div class="form-group">
+            <label for="prenom_nom">Prénom et nom <span class="required">*</span></label>
+            <input type="text" id="prenom_nom" name="prenom_nom" class="form-input" required placeholder="Jean Dupont">
+          </div>
+          <div class="form-group">
+            <label for="email">Adresse mail <span class="required">*</span></label>
+            <input type="email" id="email" name="email" class="form-input" required placeholder="jean@exemple.fr">
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--two" style="margin-bottom:20px;">
+          <div class="form-group">
+            <label for="telephone">Numéro de téléphone</label>
+            <input type="tel" id="telephone" name="telephone" class="form-input" placeholder="06 12 34 56 78">
+          </div>
+          <div class="form-group">
+            <label for="prix">Prix indicatif (€) <span class="required">*</span></label>
+            <input type="number" id="prix" name="prix" class="form-input" required min="0" step="0.01" placeholder="45">
+          </div>
+        </div>
+
+        <div class="form-grid" style="margin-bottom:20px;">
+          <div class="form-group">
+            <label for="titre">Titre du lot <span class="required">*</span></label>
+            <input type="text" id="titre" name="titre" class="form-input" required placeholder="Lot complet PASS Medisup, Fiches, QSUP, Annales">
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--two" style="margin-bottom:20px;">
+          <div class="form-group">
+            <label for="universite">Université <span class="required">*</span></label>
+            <input type="text" id="universite" name="universite" class="form-input" required placeholder="Université de Picardie">
+          </div>
+          <div class="form-group">
+            <label for="promo">Promotion <span class="required">*</span></label>
+            <input type="text" id="promo" name="promo" class="form-input" required placeholder="PASS 2023-2024">
+          </div>
+        </div>
+
+        <div class="form-grid" style="margin-bottom:20px;">
+          <div class="form-group">
+            <label for="description">Description <span class="required">*</span></label>
+            <textarea id="description" name="description" class="form-input" required rows="5" placeholder="Décris le contenu de ton lot : matières, supports, état des fiches, année de prépa..."></textarea>
+          </div>
+        </div>
+
+        <!-- Photos -->
+        <div class="form-grid" style="margin-bottom:20px;">
+          <div class="form-group">
+            <label>Photos <span class="required" style="font-weight:400;">(facultatif, 5 max)</span></label>
+            <div id="upload-zone" class="upload-zone">
+              <input type="file" id="photo-input" multiple accept="image/jpeg,image/png,image/webp">
+              <p class="upload-zone__text"><strong>Glisse tes photos ici</strong> ou clique pour parcourir</p>
+            </div>
+            <div id="photo-previews" class="photo-previews"></div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--full">Envoyer mon annonce</button>
+
+        <p class="form-note">Aucun système de paiement, tu es directement contacté par les acheteurs intéressés.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">LotMédecine</div>
+          <p class="footer__tagline">La marketplace des étudiants en médecine.</p>
+        </div>
+        <div class="footer__links">
+          <a href="/">Accueil</a>
+          <a href="/annonces">Annonces</a>
+          <a href="/a-propos">À propos</a>
+          <a href="/mentions-legales">Mentions légales</a>
+        </div>
+        <div class="footer__contact">
+          <a href="mailto:contactlotmedecine@gmail.com">contactlotmedecine@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2025 LotMédecine · Association loi 1901
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
